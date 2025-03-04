@@ -5,6 +5,62 @@ import (
 	"time"
 )
 
+func FromNullBool(in sql.NullBool) *bool {
+	if in.Valid {
+		return &in.Bool
+	}
+	return nil
+}
+
+func FromNullByte(in sql.NullByte) *byte {
+	if in.Valid {
+		return &in.Byte
+	}
+	return nil
+}
+
+func FromNullFloat64(in sql.NullFloat64) *float64 {
+	if in.Valid {
+		return &in.Float64
+	}
+	return nil
+}
+
+func FromNullInt16(in sql.NullInt16) *int16 {
+	if in.Valid {
+		return &in.Int16
+	}
+	return nil
+}
+
+func FromNullInt32(in sql.NullInt32) *int32 {
+	if in.Valid {
+		return &in.Int32
+	}
+	return nil
+}
+
+func FromNullInt64(in sql.NullInt64) *int64 {
+	if in.Valid {
+		return &in.Int64
+	}
+	return nil
+}
+
+func FromNullString(in sql.NullString) *string {
+	if in.Valid {
+		return &in.String
+	}
+	return nil
+}
+
+func FromNullTime(in sql.NullTime) *time.Time {
+	if in.Valid {
+		return &in.Time
+	}
+	return nil
+}
+
 func NullBool(val *bool) sql.NullBool {
 	if val == nil {
 		return sql.NullBool{}

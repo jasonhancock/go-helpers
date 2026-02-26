@@ -52,3 +52,30 @@ func TestFromMap(t *testing.T) {
 		require.Equal(t, ErrIncorrectType, err)
 	})
 }
+
+func TestKeys(t *testing.T) {
+	data := map[string]struct{}{
+		"a": {},
+		"z": {},
+		"e": {},
+		"p": {},
+	}
+
+	keys := Keys(data)
+	require.Contains(t, keys, "a")
+	require.Contains(t, keys, "z")
+	require.Contains(t, keys, "e")
+	require.Contains(t, keys, "p")
+}
+
+func TestKeysSorted(t *testing.T) {
+	data := map[string]struct{}{
+		"a": {},
+		"z": {},
+		"e": {},
+		"p": {},
+	}
+
+	keys := KeysSorted(data)
+	require.Equal(t, []string{"a", "e", "p", "z"}, keys)
+}

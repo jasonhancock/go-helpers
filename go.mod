@@ -5,8 +5,8 @@ go 1.21
 toolchain go1.23.4
 
 require (
-	github.com/jasonhancock/go-testhelpers/generic v0.0.15
-	github.com/stretchr/testify v1.10.0
+	github.com/jasonhancock/go-testhelpers/generic v0.0.16
+	github.com/stretchr/testify v1.11.1
 )
 
 require (

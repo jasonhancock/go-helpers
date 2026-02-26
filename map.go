@@ -1,6 +1,10 @@
 package helpers
 
-import "errors"
+import (
+	"cmp"
+	"errors"
+	"slices"
+)
 
 // ErrKeyNotFound indicates a key was not present in the map.
 var ErrKeyNotFound = errors.New("key not found")
@@ -21,4 +25,24 @@ func FromMap[T any, K comparable](data map[K]any, key K) (T, error) {
 	}
 
 	return str, nil
+}
+
+// Keys returns a slice of keys from the provided map. Does not sort them, order
+// is not deterministic.
+func Keys[K comparable, V any](m map[K]V) []K {
+	keys := make([]K, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
+// KeysSorted returns a sorted slice of keys from the provided map.
+func KeysSorted[K cmp.Ordered, V any](m map[K]V) []K {
+	keys := make([]K, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	return keys
 }
